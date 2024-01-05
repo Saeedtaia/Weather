@@ -12,20 +12,6 @@ async function weatherData(city = 'cairo'){
         const data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=0da0cc2100c8428695921344240101&q=${city}&days=3`);
         const result =await data.json();
         weatherForcast = result.forecast.forecastday;
-    // console.log(result.forecast.forecastday[0].day.mintemp_c);
-    // console.log(result.forecast.forecastday[0].day.maxtemp_c);
-    // console.log(result.forecast.forecastday[0].day.condition.text);
-    // console.log(result.forecast.forecastday[0].day.condition.icon);
-    // console.log(result.forecast.forecastday[0].date);
-    // console.log(weatherForcast);
-    // let temp = document.querySelector('.temp');
-    // temp.innerHTML =weatherForcast[0].day.maxtemp_c+'°';
-    // temp.previousElementSibling.setAttribute('src',`https:${weatherForcast[0].day.condition.icon}`) 
-    // temp.previousElementSibling.previousElementSibling.innerHTML = weatherForcast[0].day.condition.text
-    // temp.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML = `${city}`
-    // let maxTemp = document.querySelector('.max');
-    // maxTemp.lastElementChild.innerHTML = weatherForcast[0].day.maxtemp_c + '°';
-    // maxTemp.previousElementSibling.lastElementChild.innerHTML = weatherForcast[0].day.mintemp_c + '°';
     let cartona =''
     for(let i = 0; i < weatherForcast.length; i++) {
         cartona +=`
@@ -58,7 +44,6 @@ async function weatherData(city = 'cairo'){
     }
 }
 search.addEventListener('input',function(eventInfo){
-    // console.log(Array.from(this.value));
     if(Array.from(this.value).length >= 4){
         if(searchWeather(this.value)){
             weatherData(cityName)
@@ -72,50 +57,22 @@ async function searchWeather(searchResult){
     return result[0].name;
 }
 function getDayName(dateString) {
-    // const dateObject = new Date(dateString);
-    // const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    // const dayOfWeek = dateObject.getDay();
-    // const dayName = daysOfWeek[dayOfWeek];
-    // // console.log('day',dateObject.getDate());
-    // // console.log('month',dateObject.getMonth());
-    // const test = dateObject
-    // // const arrayExample = Object.entries(test);
-    // console.log(test);
-    // return dayName;
     const dateObject = new Date(dateString);
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
     const dayOfWeek = dateObject.getDay();
     const dayName = daysOfWeek[dayOfWeek];
-    
     const dayNumber = dateObject.getDate();
-    
     const monthIndex = dateObject.getMonth();
     const monthName = months[monthIndex];
-
-    // console.log(`Day: ${dayName}`);
-    // console.log(`Day Number: ${dayNumber}`);
-    // console.log(`Month: ${monthName}`);
     let data =[dayName , dayNumber , monthName];
     return data;
 }
-// function getDay(){
-//     const day = new Date();
-//     console.log(day.toLocaleString());
-//     const f = new Intl.DateTimeFormat("en-US",{
-//         dateStyle: "full",
-//     })
-//     console.log(f.format(day));
-// }
-// getDay()
 async function getId(ip){
     let id =await fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=59fd8a190e8244f5a16b4864c0ae9e0e&ip_address=${ip}`)
     let data = await id.json()
     weatherData(data.city)
-    // console.log(data.city);
 }
-// getId()
 const scrollSpy = new bootstrap.ScrollSpy(document.body, {
     target: '#navbar-example'
 })
@@ -125,8 +82,8 @@ fetch('https://api64.ipify.org?format=json')
 .then(response => response.json())
 .then(data => {
   // Access the IP address from the response
-  const userIP = data.ip;
-  console.log('User IP Address:', userIP);
+    const userIP = data.ip;
+    console.log('User IP Address:', userIP);
 getId(userIP)
 })
 .catch(error => console.error('Error fetching IP address:', error));
