@@ -94,9 +94,9 @@ function getDayName(dateString) {
     const monthIndex = dateObject.getMonth();
     const monthName = months[monthIndex];
 
-    console.log(`Day: ${dayName}`);
-    console.log(`Day Number: ${dayNumber}`);
-    console.log(`Month: ${monthName}`);
+    // console.log(`Day: ${dayName}`);
+    // console.log(`Day Number: ${dayNumber}`);
+    // console.log(`Month: ${monthName}`);
     let data =[dayName , dayNumber , monthName];
     return data;
 }
@@ -109,13 +109,27 @@ function getDayName(dateString) {
 //     console.log(f.format(day));
 // }
 // getDay()
-async function getId(){
-    let id =await fetch('https://ipgeolocation.abstractapi.com/v1/?api_key=59fd8a190e8244f5a16b4864c0ae9e0e')
+async function getId(ip){
+    let id =await fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=59fd8a190e8244f5a16b4864c0ae9e0e&ip_address=${ip}`)
     let data = await id.json()
     weatherData(data.city)
     // console.log(data.city);
 }
-getId()
+// getId()
 const scrollSpy = new bootstrap.ScrollSpy(document.body, {
     target: '#navbar-example'
 })
+async function getipAddress(){
+    // Use a third-party service to get the user's IP address
+fetch('https://api64.ipify.org?format=json')
+.then(response => response.json())
+.then(data => {
+  // Access the IP address from the response
+  const userIP = data.ip;
+  console.log('User IP Address:', userIP);
+getId(userIP)
+})
+.catch(error => console.error('Error fetching IP address:', error));
+
+}
+getipAddress()
