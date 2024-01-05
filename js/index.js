@@ -51,7 +51,7 @@ search.addEventListener('input',function(eventInfo){
     }
 })
 async function searchWeather(searchResult){
-    const data = await fetch(`http://api.weatherapi.com/v1/search.json?key=0da0cc2100c8428695921344240101&q=${searchResult}`);
+    const data = await fetch(`https://api.weatherapi.com/v1/search.json?key=0da0cc2100c8428695921344240101&q=${searchResult}`);
     const result = await data.json();
     cityName = result[0].name;
     return result[0].name;
