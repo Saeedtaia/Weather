@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css".css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="shortcut icon" href="images/fav-icon.jpg" type="image/x-icon">
+</head>
+<body>
+    <!-- <div class="waviy d-none">
+        <span style="--i:1">L</span>
+        <span style="--i:2">o</span>
+        <span style="--i:3">a</span>
+        <span style="--i:4">d</span>
+        <span style="--i:5">i</span>
+        <span style="--i:6">n</span>
+        <span style="--i:7">g</span>
+        <span style=" --i:8">.</span>
+        <span style=" --i:9">.</span>
+        <span style=" --i:10">.</span>
+    </div> -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark pt-4">
+            <div class="container" id="navbar-example">
+                <a class="navbar-brand d-flex justify-content-center align-items-center " href="#"><img src="images/logo2.png" class=" rounded-circle logo" alt="">Weather</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2  mb-lg-0 text-white">
+                    <li class="nav-item  me-5">
+                    <a class="nav-link px-4 py-0  active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item  me-5">
+                    <a class="nav-link px-4 py-0  " aria-current="page" href="#">News</a>
+                    </li>
+                    <li class="nav-item  me-5">
+                    <a class="nav-link px-4 py-0  " aria-current="page" href="#">Live Cameras</a>
+                    </li>
+                    <li class="nav-item  me-5">
+                    <a class="nav-link px-4 py-0  " aria-current="page" href="#">Photos</a>
+                    </li>
+                    <li class="nav-item  me-5">
+                    <a class="nav-link px-4 py-0  " aria-current="page" href="#">Content</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class=" w-100 m-0">
+            <div class="layer bg-black bg-opacity-25 py-5">
+                <div class="container py-5">
+                    <div class="position-relative d-flex justify-content-center  w-75 mx-auto my-5">
+                        <input type="search" name="search" class="w-100 py-3 bg-dark text-secondary text-capitalize px-3 border border-0 rounded-pill" id="search" placeholder="Find Your Location...">
+                        <button type="submit" class="bg-info border py-2 px-4 mt-2 border-0 rounded-pill position-absolute end-0 me-2 text-white">Find</button>
+                    </div>
+                    <div  class=" w-75 mx-auto">
+                        <div class=" text-center loader d-none">
+                                <div class="w-100 h-100">
+                                    <i class="fa fa-spinner fa-spin fa-6x text-info"></i>
+                                </div>
+                            </div>
+                        <div id="displayData"  class="row gy-4 mt-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="py-3 w-100">
+            <div class="container ">
+                <div class="row w-75 mx-auto my-5">
+                    <div class="col-lg-8 ">
+                        <div class="position-relative d-flex justify-content-center mb-3 ">
+                            <input type="email" name="search" class="w-100 py-2 bg-dark text-secondary px-3 border border-0 rounded-pill" id="search" placeholder="Enter your email to subscribe...">
+                            <button type="submit" class="bg-info border py-2 top-0 px-4  border-0 rounded-pill position-absolute end-0 text-white">Subscribe</button>
+                        </div>
+                        <p class="text-light-emphasis text-start">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="fa-ul d-flex">
+                            <li class="me-4"><a class="btn btn-outline-info rounded-circle social-links" href=""><i class="fa-1x fa-brands fa-facebook-f"></i></a></li>
+                            <li class="me-4"><a class="btn btn-outline-info rounded-circle social-links" href=""><i class="fa-1x fa-brands fa-twitter"></i></a></li>
+                            <li class="me-4"><a class="btn btn-outline-info rounded-circle social-links" href=""><i class="fa-1x bi bi-browser-chrome"></i></a></li>
+                            <li class="me-4"><a class="btn btn-outline-info rounded-circle social-links" href=""><i class="fa-1x fa-brands fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
