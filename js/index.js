@@ -1,11 +1,12 @@
 'use strict'
-let weatherForcast =[];
+let wavi = document.querySelector('.waviy');
+setTimeout(function(){
+    wavi.parentElement.classList.add('d-none');
+    }, 1000);let weatherForcast =[];
 let search = document.querySelector('#search')
-let cityName ;
-async function weatherData(city = 'cairo'){
+async function weatherData(city){
     let waviy = document.querySelector('.w-75 .loader')
     let row =document.querySelector('.w-75 .row')
-    // let main = document.querySelector('main')
     waviy.classList.remove('d-none');
     row.classList.toggle('d-none');
     if(city){
@@ -43,19 +44,17 @@ async function weatherData(city = 'cairo'){
     row.classList.toggle('d-none');
     }
 }
-search.addEventListener('input',function(eventInfo){
-    if(Array.from(this.value).length >= 4){
-        if(searchWeather(this.value)){
-            weatherData(cityName)
+search.addEventListener('input',async function(eventInfo){
+    
+    if(Array.from(this.value).length > 3){
+        const data = await fetch(`https://api.weatherapi.com/v1/search.json?key=0da0cc2100c8428695921344240101&q=${this.value}`);
+        const result = await data.json();
+        let back = result[0].name;
+        if(back){
+            weatherData(back)
         }
     }
 })
-async function searchWeather(searchResult){
-    const data = await fetch(`https://api.weatherapi.com/v1/search.json?key=0da0cc2100c8428695921344240101&q=${searchResult}`);
-    const result = await data.json();
-    cityName = result[0].name;
-    return result[0].name;
-}
 function getDayName(dateString) {
     const dateObject = new Date(dateString);
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -72,16 +71,15 @@ async function getId(ip){
     let id =await fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=59fd8a190e8244f5a16b4864c0ae9e0e&ip_address=${ip}`)
     let data = await id.json()
     weatherData(data.city)
+    console.log(data.city);
 }
 const scrollSpy = new bootstrap.ScrollSpy(document.body, {
     target: '#navbar-example'
 })
 async function getipAddress(){
-    // Use a third-party service to get the user's IP address
 fetch('https://api64.ipify.org?format=json')
 .then(response => response.json())
 .then(data => {
-  // Access the IP address from the response
     const userIP = data.ip;
     console.log('User IP Address:', userIP);
 getId(userIP)
