@@ -1,8 +1,5 @@
 'use strict'
-let wavi = document.querySelector('.waviy');
-setTimeout(function(){
-    wavi.parentElement.classList.add('d-none');
-    }, 1000);let weatherForcast =[];
+let weatherForcast =[];
 let search = document.querySelector('#search')
 async function weatherData(city){
     let waviy = document.querySelector('.w-75 .loader')
